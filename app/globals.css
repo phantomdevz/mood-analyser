@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
+/* ────────────────────────────────────────────────────
+   InnerCircle — Light Cream / Pastel Design System
+   ──────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #fbfbfb;
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-hover: rgba(255, 255, 255, 0.75);
+  --border: rgba(255, 255, 255, 0.25);
+  --border-subtle: rgba(200, 200, 220, 0.35);
+  --border-focus: rgba(147, 197, 253, 0.7);
+  --text-1: rgba(15, 15, 25, 0.9);
+  --text-2: rgba(15, 15, 25, 0.5);
+  --text-3: rgba(15, 15, 25, 0.3);
+
+  /* Pastel accent palette */
+  --pink:   #f9a8d4; /* pink-300 */
+  --purple: #c4b5fd; /* violet-300 */
+  --blue:   #93c5fd; /* blue-300 */
+  --yellow: #fde68a; /* yellow-200 */
+
+  --accent-grad: linear-gradient(135deg, #f9a8d4, #c4b5fd);
+  --accent-glow: rgba(196, 181, 253, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-1);
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(196, 181, 253, 0.35);
+  border-radius: 999px;
+}
+
+/* ── Range inputs – hide native styling; we overlay a custom thumb ── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+input[type='range']::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+}
+
+/* ── Text selection ── */
+::selection {
+  background: rgba(196, 181, 253, 0.35);
+  color: #1e1b4b;
 }
